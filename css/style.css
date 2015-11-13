@@ -1,0 +1,62 @@
+/* universal */
+
+h1 {
+	text-align: center;
+}
+
+a {
+	cursor: pointer;
+}
+/*
+div, nav {
+	border: 1px solid red;
+}*/
+
+/* nav */
+
+nav {
+	min-height: 55px;
+}
+
+/* page content */
+
+.main-content {
+
+}
+
+/* title & search */
+
+.title-wrapper {
+	padding-bottom: 21px;
+}
+
+.title-wrapper p {
+	text-align: center;
+}
+
+button {
+	margin-top: 13px;
+}
+
+/* results */
+
+ul {
+	list-style: none;
+	margin-top: 13px;
+	padding-left: 0; 
+}
+
+ul li {
+	display: flex;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
+ul li p {
+	padding-left: 13px; 
+}
+
+
+
+
+

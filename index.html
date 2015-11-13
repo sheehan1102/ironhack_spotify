@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Spotify</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="content-container">
+      <div class="modal fade" id="album-modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+              <ul></ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav></nav>
+      <div class="main-content">
+        <div class="artist-search">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1">
+                <div class="title-wrapper">
+                  <h1>Artist Spotify Search</h1>
+                  <p>Do ya thing, player</p>
+                  <form>
+                    <input placeholder="Type artist here...." name="artist" class="form-control" />
+                    <button type="submit" class="btn btn-primary">Search artists</button>
+                  </form> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="results">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-5 col-sm-offset-1">
+                <div id="results">
+                  <h3>Results:</h3>
+                  <ul class="results-list">
+                    <li><small>Enter a search term above....</small></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-5">
+                <div id="albums">
+                  <h3>Albums:</h3>
+                  <ul class="albums-list">
+                    <li><small>Click an artist for the albums....</small></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="js/search-module.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+      $('form').on('submit', function () {
+        event.preventDefault();
+        $('ul.results-list').html('');
+        $('ul.albums-list').html('<li><small>Click an artist for the albums....</small></li>')
+        searchModule.publicArtistSearch(this.elements['artist'].value);
+        $('input').val('');
+      });
+
+      $(document.body).on('click', '.artist-link', function () {
+        $('ul.albums-list').html('');
+        searchModule.publicAlbumsSearch($(this).attr('artist-id'));
+      });
+
+      $(document.body).on('click', '.album-link', function () {
+        searchModule.publicAlbumInfo($(this).attr('album-id'));
+      });
+
+    </script>
+  </body>
+</html>
+
+
+
+
